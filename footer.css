@@ -7,12 +7,12 @@ body {
   
   .footer {
     background-color: #222;
-    padding: 40px 20px;
+    padding: 2% 1%;
     text-align: center;
     color: #fff;
     width: 100%;
-    position: relative;
-    top: 100%;
+    position: absolute;
+    top: 183%;
   }
   
   .footer-container {
@@ -23,7 +23,7 @@ body {
   }
   
   .social-media {
-    margin-right: 20px;
+    margin-right: 2%;
   }
   
   .social-link {
@@ -65,4 +65,3 @@ body {
     font-size: 12px;
     opacity: 0.7;
   }
-  
