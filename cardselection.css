@@ -9,7 +9,7 @@ body{
 }
  
 .card{
-  margin-top: 50%;
+  margin-top: 80%;
   position: fixed;
   max-width: 100%;
   height: auto;
@@ -19,13 +19,16 @@ body{
   padding: 40px 60px;
   -webkit-box-shadow: 0 10px 15px rgba(0,0,0,.1) ;
           box-shadow: 0 10px 15px rgba(0,0,0,.1) ;
--webkit-transition: .5s;
-transition: .5s;
+  -webkit-transition: .5s;
+  transition: .5s;
+  box-shadow: 0 0 50px rgba(175, 175, 175, 0.6);
 }
+
 .card:hover{
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
+
 .col-sm-4:nth-child(1) .card ,
 .col-sm-4:nth-child(1) .card .title .fa{
   background: linear-gradient(-45deg,#f403d1,#64b5f6);
