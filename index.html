@@ -52,7 +52,7 @@
     </style>
 
 </head>
-<body>
+<body style="background-color: black;">
 
     <nav>
         <a href="index.html" style="border-bottom: none;"><img src="./pictures/brand-name.png" style="margin-top: 10%; width: 350px; height: auto;"></a>
@@ -75,30 +75,100 @@
 
     <link rel="stylesheet" href="h5.css">
 
-    <h5 style="top: -20%">Unleash Your Ideas, We'll Webit</h2>    
+    <h5 style="top: 5%">Unleash Your Ideas, We'll Webit</h2>    
     
 
 
     <link rel="stylesheet" href="carousell.css">
 
 
-      <div class="box">
-        <span style="--i:1;"><img src="./bildkarussel/1.png"></span> 
-        <span style="--i:2;"><img src="./bildkarussel/2.png"></span>
-        <span style="--i:3;"><img src="./bildkarussel/3.png"></span>
-        <span style="--i:4;"><img src="./bildkarussel/4.png"></span>
-        <span style="--i:5;"><img src="./bildkarussel/5.png"></span>
-        <span style="--i:6;"><img src="./bildkarussel/6.png"></span>
-        <span style="--i:7;"><img src="./bildkarussel/7.png"></span>
-        <span style="--i:8;"><img src="./bildkarussel/8.png"></span>
-        <span style="--i:9;"><img src="./bildkarussel/9.png"></span>
+    <div class="parallax-container">
+      <div class="box" style="top: 200%">
+        <span style="--i:1;"><img src="./pictures/bildkarussel/1.png"></span> 
+        <span style="--i:2;"><img src="./pictures/bildkarussel/2.png"></span>
+        <span style="--i:3;"><img src="./pictures/bildkarussel/3.png"></span>
+        <span style="--i:4;"><img src="./pictures/bildkarussel/4.png"></span>
+        <span style="--i:5;"><img src="./pictures/bildkarussel/5.png"></span>
+        <span style="--i:6;"><img src="./pictures/bildkarussel/6.png"></span>
+        <span style="--i:7;"><img src="./pictures/bildkarussel/7.png"></span>
+        <span style="--i:8;"><img src="./pictures/bildkarussel/8.png"></span>
+        <span style="--i:9;"><img src="./pictures/bildkarussel/9.png"></span>
       </div>
+    </div>
+
+    <script>
+      const container = document.querySelector('.parallax-container');
+      const box = document.querySelector('.box');
+
+      let timeoutId;
+      let isHovered = false;
+      let isParallaxActive = false;
+
+      function startParallax() {
+        isParallaxActive = true;
+        box.style.animation = 'parallax 10s linear infinite';
+      }
+
+      function stopParallax() {
+        isParallaxActive = false;
+        box.style.animation = '';
+      }
+
+      function startCarousel() {
+        box.style.animation = 'carousell 20s linear infinite';
+      }
+
+      function handleMouseEnter() {
+        clearTimeout(timeoutId);
+        isHovered = true;
+        if (isParallaxActive) {
+          stopParallax();
+          startCarousel();
+        } else {
+          startParallax();
+        }
+      }
+
+      function handleMouseLeave() {
+        isHovered = false;
+        timeoutId = setTimeout(() => {
+          if (!isHovered) {
+            stopParallax();
+            startCarousel();
+          }
+        }, 2000);
+      }
+
+      container.addEventListener('mouseenter', handleMouseEnter);
+      container.addEventListener('mouseleave', handleMouseLeave);
+    </script>
+
+    <style>
+      .sapphire-box {
+        position: absolute;
+        top: 177%;
+        width: 95%;
+        height: 10%;
+        background-color: #c0c0c018;
+        border: 5px solid #2e2e2e;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.286);
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        overflow: hidden;
+      }
+    </style>
+
+    <div class="sapphire-box"></div>
+    <h1 style="position:absolute; top: 180%; font-size: 20px; text-align: center; background: #616161; background: -webkit-linear-gradient(to top, #616161 20%, #FFFFFF 41%, #616161 90%); background: -moz-linear-gradient(to top, #616161 20%, #FFFFFF 41%, #616161 90%); background: linear-gradient(to top, #616161 20%, #FFFFFF 41%, #616161 90%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+      Brauchen Sie professionelle Websites jeder Art und legen Sie Wert auf Qualität, ohne die Quantität zu vernachlässigen. Wir bieten den perfekten Service und mit dem Sie mühelos für eine beeindruckende Online-Präsenz setzen können.
+    </h1>
 
 
 
     <link rel="stylesheet" href="cardselection.css">
-
-
+    
     <section>
         <div class="container-fluid">
           <div class="container">
@@ -115,7 +185,7 @@
                     <ul>
                     <li> <i class="fa fa-check" aria-hidden="true"></i> Webite </li>
                     <li> <i class="fa fa-check" aria-hidden="true"></i> Website Logo </li>
-                    <li> <i class="fa fa-times" aria-hidden="true"></i> 1 Zusatzseite </li>
+                    <li> <i class="fa fa-check" aria-hidden="true"></i> 1 Zusatzseite </li>
                     <li> <i class="fa fa-times" aria-hidden="true"></i> Live Support </li>
                     </ul>
                   </div>
@@ -157,7 +227,7 @@
                     <ul>
                     <li> <i class="fa fa-check" aria-hidden="true"></i> Website </li>
                     <li> <i class="fa fa-check" aria-hidden="true"></i> Website Logo </li>
-                    <li> <i class="fa fa-check" aria-hidden="true"></i> max. 10 Zusatzseiten </li>
+                    <li> <i class="fa fa-check" aria-hidden="true"></i> max. 5 Zusatzseiten </li>
                     <li> <i class="fa fa-times" aria-hidden="true"></i> Live Support </li>
                     </ul>
                   </div>
@@ -179,7 +249,7 @@
                     <li> <i class="fa fa-check" aria-hidden="true"></i> Website </li>
                     <li> <i class="fa fa-check" aria-hidden="true"></i> Website Logo </li>
                     <li> <i class="fa fa-check" aria-hidden="true"></i> max. 10 Zusatzseiten </li>
-                    <li> <i class="fa fa-times" aria-hidden="true"></i> Premium Support </li>
+                    <li> <i class="fa fa-check" aria-hidden="true"></i> Premium Support </li>
                     </ul>
                   </div>
                   <a href="Genius.html">Jetzt kaufen! </a>
@@ -192,14 +262,13 @@
         <style>
           .custom-shape-divider-bottom-1684356123 {
             position: absolute;
-            top: 230%;
+            top: 280%;
             right: 0;
             width: 100%;
             overflow: hidden;
             line-height: 0;
             transform: rotate(180deg);
             margin: 0;
-            background-color: black;
             z-index: -1;
           }
 
@@ -207,7 +276,7 @@
             position: relative;
             display: block;
             width: calc(126% + 1.3px);
-            height: 125px;
+            height: 180px;
             transform: rotateY(180deg);
           }
 
@@ -215,6 +284,7 @@
             fill: #00EFFF;
           }
         </style>
+      
         <div class="custom-shape-divider-bottom-1684356123">
           <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
               <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
