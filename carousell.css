@@ -5,14 +5,28 @@
   }
   
   .box {
-    position: absolute;
-    top: 115%;
-    width: 15%;
-    height: 20%;
+    position: relative;
+    top: 300px;
+    width: 300px;
+    height: 200px;
     transform-style: preserve-3d;
     animation: carousell 20s linear infinite;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  @keyframes parallax {
+    0% {
+      transform: perspective(1000px) rotateX(-20deg) rotateY(0deg) scale(1);
+    }
+    70% {
+      transform: perspective(1000px) rotateX(-20deg) rotateY(0deg) scale(1.2);
+    }
+    100% {
+      transform: perspective(1000px) rotateX(-20deg) rotateY(0deg) scale(1);
+    }
   }
   
+
   @keyframes carousell {
   
     0% {
@@ -21,6 +35,11 @@
     100% {
       transform: perspective(1000px) rotateX(-20deg) rotateY(360deg);
     }
+  }
+
+
+  .box:hover {
+    animation: parallax 15s infinite
   }
   
   .box span {
@@ -42,3 +61,4 @@
     height: 100%;
     object-fit: cover;
   }
+  
