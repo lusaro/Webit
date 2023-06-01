@@ -125,7 +125,7 @@
 
     .shake-animation {
       animation: shake 0.4s;
-    }
+    } 
 
     @keyframes shake {
       0% { transform: translateX(-5px); }
@@ -143,6 +143,7 @@
   </style>
 </head>
 <body>
+
   <h1>Anmeldefeld</h1>
   <form id="form" action="mailto:webit.germany@gmail.com?subject=Websitebestellung" method="post" enctype="text/plain">
     <label for="name">Dein Name:</label>
@@ -175,10 +176,17 @@
     <label for="Rabattcodes">Rabattcodes:</label>
     <input type="text" placeholder="Coming Soon" readonly/>
 
+    <label for="acceptance">
+      <input type="checkbox" id="acceptance" name="acceptance" required>
+      I accept the terms and conditions
+    </label>
+
     <input type="submit" value="Absenden" id="submit-btn">
   </form>
 
   <a href="index.html" onclick="window.history.back();" class="animated-button">Zurück</a>
+
+    
 
   <script>
     const form = document.getElementById('form');
