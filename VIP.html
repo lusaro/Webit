@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Anmeldefeld</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #fff;
+      padding: 20px;
+    }
+
+    #page-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: #fff;
+      text-align: center;
+      margin-left: 30%;
+      margin-right: 30%;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #fff;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #222;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    input[type="text"],
+    select {
+      width: 95%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #444;
+      border-radius: 5px;
+      transition: border-color 0.3s ease;
+      background-color: #333;
+      color: #fff;
+    }
+
+    input[type="text"]:focus,
+    select:focus {
+      outline: none;
+      border-color: #fff;
+    }
+
+    input[type="submit"] {
+      background-color: #1500ff;
+      color: #fff;
+      border: none;
+      position: relative;
+      left: 40%;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0091ff;
+    }
+    
+    input[type="checkbox"] {
+      margin-left: 5px;
+    }
+
+    input[type="text"][readonly] {
+      background-color: #333;
+      color: #fff;
+      cursor: not-allowed;
+    }
+    
+    /* Button Styles */
+    .animated-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 9999;
+      background-color: #000;
+      color: #fff;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .animated-button:hover {
+      background-color: #000000;
+      opacity: 0.5;
+      color: #ffffff;
+    }
+
+    .animated-button:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      opacity: 0.001;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .animated-button:hover:before {
+      opacity: 0;
+    }
+
+    .shake-animation {
+      animation: shake 0.4s;
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(-5px); }
+      20% { transform: translateX(5px); }
+      40% { transform: translateX(-5px); }
+      60% { transform: translateX(5px); }
+      80% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
+
+    input.invalid {
+      border-color: #ff0000 !important;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Anmeldefeld</h1>
+  <form id="form" action="mailto:webit.germany@gmail.com?subject=Websitebestellung" method="post" enctype="text/plain">
+    <label for="name">Dein Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="packet">Paket:</label>
+    <select id="packet" name="packet" required>
+      <option value="Paket 2 | 50 EUR">Paket 2 | 50€</option>
+    </select><br><br>
+
+    <label for="websitename">Name der Website:</label>
+    <input type="text" id="websitename" name="websitename" required><br><br>
+
+    <label for="imageNeeded">Brauchst du ein Bild? ("✔️" = Ja)</label>
+    <input type="checkbox" id="imageNeeded" name="imageNeeded"><br><br>
+
+    <label for="thema">Thema der Website:</label>
+    <input type="text" id="thema" name="thema" required><br><br>
+
+    <label for="kontaktdaten">Kontaktdaten:</label>
+    <input type="text" id="kontaktdaten" name="kontaktdaten" required><br><br>
+
+    <label for="zahlungsmethode">Zahlungsmethode:</label>
+    <select id="zahlungsmethode" name="zahlungsmethode" required>
+      <option value="paypal">PayPal</option>
+      <option value="paysafe">Paysafe</option>
+      <option value="Amazon">Amazon</option>
+    </select><br><br>
+
+    <label for="Rabattcodes">Rabattcodes:</label>
+    <input type="text" placeholder="Coming Soon" readonly/>
+
+    <label for="acceptance">
+      <input type="checkbox" id="acceptance" name="acceptance" required>
+      I accept the terms and conditions
+    </label>
+
+    <input type="submit" value="Absenden" id="submit-btn">
+  </form>
+
+  <a href="index.html" onclick="window.history.back();" class="animated-button">Zurück</a>
+
+  <script>
+    const form = document.getElementById('form');
+    const submitButton = document.getElementById('submit-btn');
+
+    function checkFormValidity() {
+      const inputs = form.querySelectorAll('input[required], select[required]');
+      let isFormValid = true;
+
+      inputs.forEach(input => {
+        if (!input.value) {
+          isFormValid = false;
+          input.classList.add('invalid');
+        } else {
+          input.classList.remove('invalid');
+        }
+      });
+
+      return isFormValid;
+    }
+
+    function getRandomDirection() {
+  return Math.random() < 0.5 ? -1 : 1; // Randomly returns -1 or 1
+}
+
+submitButton.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  if (checkFormValidity()) {
+    form.submit();
+  } else {
+    const distance = Math.random() > 0.5 ? Math.floor(Math.random() * 300) + 100 : -(Math.floor(Math.random() * 300) + 100); // Random distance between -300px and 300px
+    const direction = distance >= 0 ? -1 : 1; // Move left if distance is positive, right if negative
+
+    const moveDistance = Math.abs(distance);
+
+    submitButton.style.transition = 'transform 0.3s ease';
+    submitButton.style.transform = `translateX(${direction * moveDistance}px)`;
+
+    setTimeout(() => {
+      submitButton.style.transition = '';
+      submitButton.style.transform = `translateX(${direction * -200}px)`;
+    }, 30);
+  }
+});
+  </script>
+</body>
+</html>

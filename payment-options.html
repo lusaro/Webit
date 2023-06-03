@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Zahlungsoptionen</title>
+  <style>
+    body {
+      background-color: #1f1f1f;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+  
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+      text-align: center;
+    }
+  
+    h1 {
+      font-size: clamp(10px, 8vw, 50px);
+      margin-bottom: 40px;
+    }
+  
+    .payment-options {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      position: relative;
+    }
+  
+    .payment-option {
+      width: 200px;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 6px rgb(152, 152, 152);
+      transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+      cursor: pointer;
+      text-decoration: none;
+      position: relative;
+      z-index: 1;
+    }
+  
+    .payment-option:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      background-color: #595959;
+    }
+  
+    .payment-option.selected {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      background-color: #595959;
+      z-index: 2;
+    }
+  
+    .payment-option.selected ~ .payment-option {
+      margin-top: 40px;
+    }
+  
+    .payment-option img {
+      max-width: 100%;
+      height: auto;
+    }
+  
+    .payment-option span {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #333;
+    }
+  
+    .selected-payment-option {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      display: none;
+    }
+  
+    .selected-payment-option.show {
+      display: block;
+    }
+  
+    .selected-payment-option textarea {
+      width: 100%;
+      height: 200px;
+      padding: 10px;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+  
+    .payment-option label {
+      margin-top: 20px;
+      display: none;
+    }
+
+    .payment-option.selected label {
+      display: block;
+    }
+    
+    .payment-option input::placeholder {
+      color: #aaa;
+      font-size: 12px;
+    }
+    
+    /* Hide all input fields initially */
+    .payment-option input {
+      display: none;
+    }
+    
+    /* Show input field of selected payment option */
+    .payment-option.selected input {
+      display: block;
+      top: 30%;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Entscheide dich für eine Methode</h1>
+      <div class="payment-options">
+        <a class="payment-option">
+          <img src="https://static.cdnlogo.com/logos/a/1/amazon-icon.svg" alt="Amazon">
+          <span>Amazon</span>
+          <label for="amazon-code">Code:</label>
+          <input type="text" id="amazon-code" name="amazon-code" maxlength="16" required placeholder="Code eingeben"><br><br>
+        </a>
+        <a class="payment-option">
+          <img src="https://cdn-icons-png.flaticon.com/512/174/174861.png" alt="PayPal">
+          <span>PayPal</span>
+        </a>
+        <a class="payment-option">
+          <img src="https://whatsontonight.ca/wp-content/uploads/2021/06/paysafe-logo-360x220-1.webp" alt="Paysafe">
+          <span>Paysafe</span>
+          <label for="paysafe-code">Code:</label>
+          <input type="text" id="paysafe-code" name="paysafe-code" maxlength="16" required placeholder="Code eingeben"><br><br>
+        </a>
+        <a class="payment-option">
+          <img src="https://cdn-icons-png.flaticon.com/512/6963/6963703.png" alt="Credit Card">
+          <span>Kreditkarte</span>
+        </a>
+      </div>
+      <button class="submit-button" onclick="submitForm()">
+        <span class="button-text">Submit</span>
+        <div></div>
+      </button>  
+      <div style="margin-top: 5%;">
+        WENN SICH KEINE NEUE SEITE ÖFFNET, KONTAKTIERE UND PER <a href="https://www.instagram.com/webit_ofc/">INSTAGRAM</a>
+      </div>
+    </div>
+    </form>
+
+  <script>
+    document.querySelector('.submit-button').addEventListener('click', () => {
+  const selectedOption = document.querySelector('.payment-option.selected');
+  const codeInput = selectedOption.querySelector('input');
+
+  let code = '';
+  if (codeInput) {
+    code = codeInput.value;
+  }
+
+ 
+  alert('Sent code: ' + code);
+});
+
+const paymentOptions = document.querySelectorAll('.payment-option');
+
+paymentOptions.forEach(option => {
+  option.addEventListener('click', () => {
+    paymentOptions.forEach(option => option.classList.remove('selected'));
+    option.classList.add('selected');
+  });
+});
+  </script>
+</body>
+</html>
